@@ -1,0 +1,22 @@
+{
+  "name": "team-space-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcmahonmike/team-space-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcmahonmike/team-space-generator/issues"
+  },
+  "homepage": "https://github.com/mcmahonmike/team-space-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
