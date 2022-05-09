@@ -1,3 +1,4 @@
+//Function to generate the HTML page
 function generateHTML(team) {
     return `
     <!DOCTYPE html>
@@ -14,69 +15,68 @@ function generateHTML(team) {
         <h1 class="">Team Space</h1>
     </header>
     <main>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
         ${generateManagerCard(team[0])}
         ${generateTeamCard(team)}
+    </div>    
     </main>
     
 </body>
 </html>
     `;
 }
-
+//Function to run the manager input
 function generateManagerCard(manager) {
     return `
-    <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
               <div class="card">
-                <div class="card-header card text-white bg-primary mb-3">${manager.name}</div>
+                <div class="card-header card text-white bg-primary mb-3">${manager.name}
+                <h5>MANAGER</h5></div>
                 <div class="card-body">
                   <ul class="list-group list-group-flush card border-secondary mb-3">
-                    <li class="list-group-item">${manager.id}</li>
-                    <li class="list-group-item">${manager.email}</li>
-                    <li class="list-group-item">${manager.officeNumber}</li>
+                    <li class="list-group-item"> ID: ${manager.id}</li>
+                    <li class="list-group-item"> Email: <a href="mailto: ${manager.email}">${manager.email}</a></li>
+                    <li class="list-group-item"> Office Number: ${manager.officeNumber}</li>
                   </ul>
                 </div>
               </div>
-            </div>
-          </div>`
+            </div>`
 }
-
+//Function to generate cards for Interns or Engineers
 function generateTeamCard(team) {
     const employees = team.map(emp => {
         switch (emp.getRole()) {
             case "Engineer":
              return`
-        <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
               <div class="card">
-                <div class="card-header card text-white bg-primary mb-3">${emp.getName()}</div>
+                <div class="card-header card text-white bg-primary mb-3">${emp.getName()}
+                <h5>ENGINEER</h5></div>
                 <div class="card-body">
                   <ul class="list-group list-group-flush card border-secondary mb-3">
-                    <li class="list-group-item">${emp.getId()}</li>
-                    <li class="list-group-item"> <a href="mailto:${emp.getEmail()}">${emp.getEmail()}</a></li>
-                    <li class="list-group-item"><a href='https://github.com/${emp.github}' target='_blank'>${emp.github}</a></li>
+                    <li class="list-group-item"> ID: ${emp.getId()}</li>
+                    <li class="list-group-item"> Email: <a href="mailto:${emp.getEmail()}">${emp.getEmail()}</a></li>
+                    <li class="list-group-item"> GitHub: <a href='https://github.com/${emp.getGithub()}' target='_blank'>${emp.getGithub()}</a></li>
                   </ul>
                 </div>
               </div>
-            </div>
-          </div>`
+            </div>`
 
           case "Intern":
              return`
-        <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
               <div class="card">
-                <div class="card-header card text-white bg-primary mb-3">${emp.getName()}</div>
+                <div class="card-header card text-white bg-primary mb-3">${emp.getName()}
+                <h5>INTERN</h5></div>
                 <div class="card-body">
                   <ul class="list-group list-group-flush card border-secondary mb-3">
-                    <li class="list-group-item">${emp.getId()}</li>
-                    <li class="list-group-item"> <a href="mailto:${emp.getEmail()}">${emp.getEmail()}</a></li>
-                    <li class="list-group-item">${emp.school}</li>
+                    <li class="list-group-item"> ID: ${emp.getId()}</li>
+                    <li class="list-group-item"> Email:  <a href="mailto:${emp.getEmail()}">${emp.getEmail()}</a></li>
+                    <li class="list-group-item"> School: ${emp.getSchool()}</li>
                   </ul>
                 </div>
               </div>
-            </div>
-          </div>`
+            </div>`
 }
 })
 return employees.join('');

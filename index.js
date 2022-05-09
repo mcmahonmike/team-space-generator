@@ -5,10 +5,10 @@ const generateHTML = require('./src/generateHTML')
 const Manager = require('./lib/Manager.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
-
+// Empty Array to hold team members
 const team = []
 
-
+// Prompt questions for team manager
 const managerPrompt = () => {
 const prompts = [
     {
@@ -36,6 +36,7 @@ const prompts = [
     },
 
 ]
+// Runs inquirer and pushes to the empty team array
 inquirer.prompt(prompts)
 .then(({name, id, email, officeNumber}) => {
     const manager = new Manager(name, id, email, officeNumber)
@@ -43,7 +44,7 @@ inquirer.prompt(prompts)
     finishTeam()
 })
 }
-
+// Prompt questions for Engineers
 const engineerPrompt = () => {
 const prompts = [
     {
@@ -65,7 +66,7 @@ const prompts = [
     },
 
     {
-        type: 'number',
+        type: 'input',
         name: 'github',
         message: 'What is the Engineer GitHub username?'
     },
@@ -80,7 +81,7 @@ inquirer.prompt(prompts)
 })
 }
 
-
+// Prompt questions for Interns
 const internPrompt = () => {
 const prompts = [
     {
@@ -102,7 +103,7 @@ const prompts = [
     },
 
     {
-        type: 'number',
+        type: 'input',
         name: 'school',
         message: 'What is the team Intern school name?'
     },
@@ -115,7 +116,7 @@ inquirer.prompt(prompts)
     finishTeam()
 })
 }
-
+// Function to display options for adding more team members
 const finishTeam = () => {
     const prompts = [
     {
@@ -125,6 +126,7 @@ const finishTeam = () => {
         choices: ['Engineer', 'Intern', new inquirer.Separator, 'Finish Team']
     },
 ]
+// switch case to change role depending on user input
 inquirer.prompt(prompts)
 .then(({role}) => {
    switch(role) {
@@ -143,6 +145,7 @@ inquirer.prompt(prompts)
 })
 
 }
+//function to write the HTML page
 function generateTeamPage() {
     fs.writeFile('./dist/index.html', generateHTML(team), err => {
                      if (err) throw new Error(err)
