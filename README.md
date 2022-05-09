@@ -15,7 +15,7 @@ The Team Space Generator is a command-line driven application that will generate
 Node.js was installed to run the application, Jest.js was installed for running the tests, the Inquirer package from NPM was installed to run the questions prompts in the command-line and Bootstrap was linked to the page for styling.
 
 ## Usage
-Below is a video to showing an example of how the application runs and generates the README.md file. Video:
+Below is a video to showing an example of how the application and tests run and generates the HTML file. Video:
 
 https://drive.google.com/file/d/1nw5np3CyXKVk6GpxhzbOxdOfEzOlcCRf/view
 
